@@ -1,12 +1,14 @@
 package com.labmedicine.api_labmedication.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
+@Entity
+@Data
+@Table(name = "medicamentos")
 public class Medicamento {
 
     @Id
@@ -16,8 +18,8 @@ public class Medicamento {
     @Column(nullable = false)
     private String nomeMedicamento;
 
-    @Column(nullable = false)
-    private LocalDate dataAdministracao;
+    @Column(nullable = false,columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant moment;
 
     @Column(nullable = false)
     private TipoMedicamento tipoMedicamento;
@@ -31,6 +33,12 @@ public class Medicamento {
     @Column(nullable = false)
     private String observacoes;
 
-//    TODO criar relacionamento com paciente - obrigatório
-//    TODO criar relacionamento com medico - obrigatório
+    @ManyToOne
+    @JoinColumn(name = "paciente_id")
+    private Paciente paciente;
+
+    @ManyToOne
+    @JoinColumn(name = "medico_id")
+    private Usuario medico;
+
 }

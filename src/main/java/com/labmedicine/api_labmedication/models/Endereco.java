@@ -1,10 +1,11 @@
 package com.labmedicine.api_labmedication.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Entity
+@Data
+@Table(name = "enderecos")
 public class Endereco {
 
     @Id
@@ -32,4 +33,5 @@ public class Endereco {
     private String complemento;
 
     private String pontoReferencia;
+
 }

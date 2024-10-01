@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -27,7 +29,10 @@ public class Paciente extends Pessoa{
 
     private LocalDate validadeConvenio;
 
-//    TODO: criar relacionamento endereço
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
-
+    @OneToMany(mappedBy = "paciente")
+    private List<Medicamento> medicamentos = new ArrayList<>();
 }

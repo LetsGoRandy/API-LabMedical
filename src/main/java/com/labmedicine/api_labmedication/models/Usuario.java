@@ -3,6 +3,9 @@ package com.labmedicine.api_labmedication.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,5 +26,8 @@ public class Usuario extends Pessoa{
 
     @Column(nullable = false)
     private String senha;
+
+    @OneToMany(mappedBy = "medico")
+    private List<Medicamento> medicamentos = new ArrayList<>();
 
 }
