@@ -11,6 +11,9 @@ import lombok.*;
 @Table(name = "usuarios")
 public class Usuario extends Pessoa{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String crm;
@@ -21,16 +24,4 @@ public class Usuario extends Pessoa{
     @Column(nullable = false)
     private String senha;
 
-
-
-    public enum EspecializacaoClinica{
-        CLINICO_GERAL,
-        ANESTESISTA,
-        DERMATOLOGISTA,
-        GINECOLOGISTA,
-        NEUROLOGISTA,
-        PEDIATRA,
-        PSIQUIATRA,
-        ORTOPEDISTA
-    }
 }

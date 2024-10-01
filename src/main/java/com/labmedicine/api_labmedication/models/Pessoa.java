@@ -14,10 +14,6 @@ import java.time.LocalDate;
 @MappedSuperclass
 public class Pessoa {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(nullable = false)
     private String nomeCompleto;
 
@@ -46,12 +42,4 @@ public class Pessoa {
     @Column(nullable = false)
     private EstadoCivil estadoCivil;
 
-
-    public enum EstadoCivil {
-        SOLTEIRO,
-        CASADO,
-        SEPARADO,
-        DIVORCIADO,
-        VIUVO
-    }
 }
