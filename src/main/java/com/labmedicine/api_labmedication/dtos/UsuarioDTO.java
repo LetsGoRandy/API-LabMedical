@@ -1,5 +1,7 @@
 package com.labmedicine.api_labmedication.dtos;
 
+import com.labmedicine.api_labmedication.models.EspecializacaoClinica;
+import com.labmedicine.api_labmedication.models.EstadoCivil;
 import com.labmedicine.api_labmedication.models.Pessoa;
 import com.labmedicine.api_labmedication.models.Usuario;
 import jakarta.validation.constraints.*;
@@ -40,10 +42,10 @@ public class UsuarioDTO {
     private String crm;
 
     @NotBlank(message = "O estado civil é obrigatório")
-    private Pessoa.EstadoCivil estadoCivil;
+    private EstadoCivil estadoCivil;
 
     @NotBlank(message = "A especialização clínica é obrigatória")
-    private Usuario.EspecializacaoClinica especializacaoClinica;
+    private EspecializacaoClinica especializacaoClinica;
 
     @NotBlank(message = "A senha é obrigatória")
     @Size(min = 8, message = "A senha deve conter no mínimo 8 dígitos")

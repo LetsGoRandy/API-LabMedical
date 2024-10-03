@@ -3,6 +3,9 @@ package com.labmedicine.api_labmedication.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -11,6 +14,9 @@ import lombok.*;
 @Table(name = "usuarios")
 public class Usuario extends Pessoa{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String crm;
@@ -21,16 +27,7 @@ public class Usuario extends Pessoa{
     @Column(nullable = false)
     private String senha;
 
+    @OneToMany(mappedBy = "medico")
+    private List<Medicamento> medicamentos = new ArrayList<>();
 
-
-    public enum EspecializacaoClinica{
-        CLINICO_GERAL,
-        ANESTESISTA,
-        DERMATOLOGISTA,
-        GINECOLOGISTA,
-        NEUROLOGISTA,
-        PEDIATRA,
-        PSIQUIATRA,
-        ORTOPEDISTA
-    }
 }
