@@ -5,7 +5,9 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -33,6 +35,12 @@ public class Paciente extends Pessoa{
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "paciente")
-    private List<Medicamento> medicamentos = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "paciente_medicamento",
+            joinColumns = @JoinColumn(name = "paciente_id"),
+            inverseJoinColumns = @JoinColumn(name = "medicamento_id")
+    )
+    private Set<Medicamento> medicamentos = new HashSet<>();
+
 }

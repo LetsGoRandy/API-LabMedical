@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -33,12 +35,10 @@ public class Medicamento {
     @Column(nullable = false)
     private String observacoes;
 
-    @ManyToOne
-    @JoinColumn(name = "paciente_id")
-    private Paciente paciente;
+    @ManyToMany(mappedBy = "medicamentos")
+    private Set<Paciente> pacientes = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "medico_id")
-    private Usuario medico;
+    @ManyToMany(mappedBy = "medicamentos")
+    private Set<Usuario> medicos = new HashSet<>();
 
 }
