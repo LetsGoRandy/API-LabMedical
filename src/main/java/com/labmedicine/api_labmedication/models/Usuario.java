@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,7 +29,12 @@ public class Usuario extends Pessoa{
     @Column(nullable = false)
     private String senha;
 
-    @OneToMany(mappedBy = "medico")
-    private List<Medicamento> medicamentos = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "medico_medicamento",
+            joinColumns = @JoinColumn(name = "medico_id"),
+            inverseJoinColumns = @JoinColumn(name = "medicamento_id")
+    )
+    private Set<Medicamento> medicamentos = new HashSet<>();
 
 }
