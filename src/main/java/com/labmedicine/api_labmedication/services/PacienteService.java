@@ -82,7 +82,9 @@ public class PacienteService {
         paciente.setNumeroConvenio(pacienteDTO.getNumeroConvenio());
         paciente.setValidadeConvenio(pacienteDTO.getValidadeConvenio());
         paciente.setEndereco(endereco);
-        return paciente;
+
+        paciente = pacienteRepository.save(paciente);
+        return new PacienteDTO(paciente);
     }
 
     @Transactional
