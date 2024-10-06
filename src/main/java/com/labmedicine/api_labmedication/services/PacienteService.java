@@ -57,13 +57,6 @@ public class PacienteService {
             throw new ResourceAlreadyExistsException("O CPF informado já está cadastrado.");
         }
 
-        Paciente paciente = getPaciente(pacienteDTO, endereco);
-
-        paciente = pacienteRepository.save(paciente);
-        return new PacienteDTO(paciente);
-    }
-
-    private static Paciente getPaciente(PacienteDTO pacienteDTO, Endereco endereco) {
         Paciente paciente = new Paciente();
         paciente.setId(pacienteDTO.getId());
         paciente.setNomeCompleto(pacienteDTO.getNomeCompleto());
