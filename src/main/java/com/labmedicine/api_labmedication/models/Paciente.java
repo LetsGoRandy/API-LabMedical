@@ -1,12 +1,11 @@
 package com.labmedicine.api_labmedication.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,6 +28,7 @@ public class Paciente extends Pessoa{
 
     private String numeroConvenio;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate validadeConvenio;
 
     @ManyToOne
@@ -43,4 +43,7 @@ public class Paciente extends Pessoa{
     )
     private Set<Medicamento> medicamentos = new HashSet<>();
 
+    public void setEndereco() {
+        this.endereco = new Endereco();
+    }
 }
