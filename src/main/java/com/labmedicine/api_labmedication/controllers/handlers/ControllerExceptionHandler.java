@@ -39,6 +39,7 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(status).body(error);
     }
 
+//    Exception para impedir inconsistencias no db (Ex: deletar paciente com medicação prescrita)
     @ExceptionHandler(DataBaseException.class)
     public ResponseEntity<Object> database(DataBaseException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
@@ -46,6 +47,7 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(status).body(error);
     }
 
+//    Exception para response Validations
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> methodArgumentNotValidation(MethodArgumentNotValidException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST; // também pode utilizar UNPROCESSABLE_ENTITY - Retorna erro 422
