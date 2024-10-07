@@ -46,12 +46,11 @@ public class PacienteService {
 
     @Transactional
     public PacienteDTO criarPaciente(PacienteDTO pacienteDTO){
-        // Verificar se o ID do endereço é fornecido
         if (pacienteDTO.getEnderecoId() == null) {
             throw new IllegalArgumentException("ID do endereço é obrigatório");
         }
         Endereco endereco = enderecoRepository.findById(pacienteDTO.getEnderecoId())
-                .orElseThrow(() -> new ResourceNotFoundException("Paciente com ID: " + pacienteDTO.getEnderecoId() + " não encontrado."));
+                .orElseThrow(() -> new ResourceNotFoundException("Endereço com ID: " + pacienteDTO.getEnderecoId() + " não encontrado."));
 
         if (pacienteRepository.existsByCpf(pacienteDTO.getCpf())) {
             throw new ResourceAlreadyExistsException("O CPF informado já está cadastrado.");
