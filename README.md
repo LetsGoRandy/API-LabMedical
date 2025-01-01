@@ -1,7 +1,7 @@
-﻿# Lab Medication API
+﻿# Lab Medical API
 
 
-O LabMedication é uma API desenvolvida como parte da avaliação do módulo 2 do curso FullStack oferecido pelo SESI/SENAI, 
+O LabMedical é uma API desenvolvida como parte da avaliação do módulo 2 do curso FullStack oferecido pelo SESI/SENAI, 
 que oferece diversos Endpoints para gerenciar um software gestão de atendimentos médicos nos hospitais da Rede LABMedicine.
 
 ## Tecnologias utilizadas
